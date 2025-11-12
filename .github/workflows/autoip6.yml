@@ -1,14 +1,11 @@
 name: Collect IPs and Save to Files
-
 on:
   schedule:
     - cron: '30 * * * *' # 每小时的第30分钟执行一次，UTC时间
   workflow_dispatch: # 允许手动触发
-  
 permissions:
   contents: write
   actions: write
-  
 jobs:
   collect-ip-addresses:
     runs-on: ubuntu-latest
@@ -18,21 +15,16 @@ jobs:
         with:
           retain_days: 0
           keep_minimum_runs: 3
-		  
       - name: Check out repository
         uses: actions/checkout@v4
-		
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-		  
       - name: Install dependencies
         run: pip install requests ipaddress selenium webdriver-manager
-		
       - name: Run IP collection script
         run: python autoip6.py
-		
       - name: Commit and push results
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
