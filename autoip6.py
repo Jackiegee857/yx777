@@ -34,7 +34,7 @@ unique_ipv4 = set()
 unique_ipv6 = set()
 
 def setup_selenium():
-    """设置无头Chrome浏览器"""
+    # 设置无头Chrome浏览器
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # 无头模式,适合Actions
     chrome_options.add_argument("--no-sandbox")
@@ -136,21 +136,21 @@ for ip 在 sorted_ipv4:
     results_v4.append(f"{ip}:8443#{country_code}")
     time.sleep(1)
 with open('ip.txt', 'w', encoding='utf-8') as file:
-    for line 在 results_v4:
-        文件。write(line + '\n')
+    for line in results_v4:
+        file.write(line + '\n')
 print(f'已保存 {len(results_v4)} 个唯一IPv4地址及country_code到ip.txt文件.')
-print(f'ip.txt 大小: {os.path。getsize("ip.txt") if os.path.exists("ip.txt") else 0} bytes')  # 调试大小
+print(f'ip.txt 大小: {os.path.getsize("ip.txt") if os.path.exists("ip.txt") else 0} bytes')  # 调试大小
 
 # IPv6处理(即使空也写空文件)
 sorted_ipv6 = sorted(unique_ipv6)
 results_v6 = []
-for ip 在 sorted_ipv6:
+for ip in sorted_ipv6:
     country_code = get_country_code(ip)
     results_v6.append(f"[{ip}]:8443#{country_code}-IPV6")
     time.sleep(1)
 with open('ipv6.txt', 'w', encoding='utf-8') as file:
-    for line 在 results_v6:
-        文件。write(line + '\n')
+    for line in results_v6:
+        file.write(line + '\n')
 print(f'已保存 {len(results_v6)} 个唯一IPv6地址及country_code到ipv6.txt文件.')
 print(f'ipv6.txt 大小: {os.path.getsize("ipv6.txt") if os.path.exists("ipv6.txt") else 0} bytes')  # 调试大小
 
