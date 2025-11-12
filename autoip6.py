@@ -3,6 +3,13 @@ import re
 import os
 import time
 import ipaddress
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 # 目标URL列表
 urls = [
@@ -33,37 +40,70 @@ if os.path.exists('ipv6.txt'):
 unique_ipv4 = set()
 unique_ipv6 = set()
 
+def setup_selenium():
+    """设置无头Chrome浏览器"""
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # 无头模式,适合Actions
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
+
 for url in urls:
     try:
-        # 发送HTTP请求获取网页内容(添加headers模拟浏览器,防屏蔽)
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-        response = requests.get(url, headers=headers, timeout=7)
-        
-        # 确保请求成功
-        if response.status_code == 200:
-            # 获取网页的文本内容
-            html_content = response.text
-            
+        if url == 'https://ip.164746.xyz':  # 针对动态站点用Selenium
+            print(f'使用Selenium处理动态站点: {url}')
+            driver = setup_selenium()
+            driver.get(url)
+            # 等待动态加载(调整时间或加按钮点击)
+            time.sleep(10)  # 等待JS加载IP, 或替换为: WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "ip-table"))) 等
+            # 假设有"开始测速"按钮, 替换为实际选择器(浏览器检查元素)
+            # try:
+            #     start_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "start-test")))  # 或By.CLASS_NAME("btn-start")
+            #     start_button.click()
+            #     time.sleep(5)  # 等待结果
+            # except:
+            #     print("无按钮, 直接等待加载")
+            html_content = driver.page_source
+            driver.quit()
+        else:  # 其他URL用requests
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+            response = requests.get(url, headers=headers, timeout=7)
+            if response.status_code == 200:
+                html_content = response.text
+            else:
+                print(f'请求 {url} 失败: status {response.status_code}')
+                continue
+
+        # 确保内容获取(对Selenium也检查)
+        if 'html_content' in locals() and len(html_content) > 100:  # 过滤空内容
             # 使用正则表达式查找IP地址
             ipv4_matches = re.findall(ipv4_pattern, html_content)
             ipv6_matches = re.findall(ipv6_pattern, html_content)
             
             # 用ipaddress校验并去重
+            valid_ipv4 = []
             for ip in ipv4_matches:
                 try:
                     ipaddress.IPv4Address(ip)
                     unique_ipv4.add(ip)
+                    valid_ipv4.append(ip)
                 except ValueError:
                     continue
+            valid_ipv6 = []
             for ip in ipv6_matches:
                 try:
-                    # 粗略过滤后进一步用ipaddress校验
-                    ip_obj = ipaddress.IPv6Address(ip)
+                    ipaddress.IPv6Address(ip)
                     unique_ipv6.add(ip.lower())
+                    valid_ipv6.append(ip)
                 except ValueError:
                     continue
-    except requests.exceptions.RequestException as e:
-        print(f'请求 {url} 失败: {e}')
+            print(f'从 {url} 提取: {len(ipv4_matches)} IPv4候选, {len(ipv6_matches)} IPv6候选 (有效: {len(valid_ipv4)} IPv4, {len(valid_ipv6)} IPv6)')
+        else:
+            print(f'{url} 内容为空或过短, 跳过')
+    except Exception as e:  # 捕获Selenium/requests错误
+        print(f'处理 {url} 失败: {e}')
         continue
 
 # 查询每个IP的country_code
