@@ -35,8 +35,9 @@ jobs:
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
+          git pull --rebase origin main  # 关键：先拉取远程变更
           git commit -m "Update IP speed test results [auto] - 10MB CF bandwidth test"
-          git push
+          git push origin main
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
