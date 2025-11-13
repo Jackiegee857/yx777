@@ -1,0 +1,40 @@
+name: IP Speed Test
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # 每 6 小时运行一次 (UTC: 00:00, 06:00, 12:00, 18:00)
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  test-speed:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+
+    - name: Run speed test script
+      run: python test_speed.py
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add speed_ip.txt
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update IP speed test results [auto] - All successful IPs"
+          git push
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
