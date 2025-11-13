@@ -35,7 +35,9 @@ jobs:
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
-          git pull --rebase origin main  # 关键：先拉取远程变更
+          git stash push -m "Temp stash for rebase"  # 存变更
+          git pull --rebase origin main  # 拉取远程
+          git stash pop  # 恢复变更
           git commit -m "Update IP speed test results [auto] - 10MB CF bandwidth test"
           git push origin main
         fi
