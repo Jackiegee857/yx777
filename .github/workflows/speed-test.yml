@@ -31,7 +31,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add speed_ip.md
+        git add speed_ip.txt
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
