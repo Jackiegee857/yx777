@@ -1,0 +1,107 @@
+# IP 带宽测速结果 (IP#国家 + 国旗图像 + 速率，所有成功 IP)
+
+生成时间: 2025-11-13 15:44:49 UTC
+总测试: 100, 成功: 100, 失败: 0
+
+## 结果列表 (按速率降序):
+
+- 104.26.8.117 #United States ![国旗](https://flagcdn.com/w20/us.png) + 113.4MB/s
+- 162.159.140.85 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 96.7MB/s
+- 172.66.3.155 #Unknown + 95.4MB/s
+- 104.17.210.85 #United States ![国旗](https://flagcdn.com/w20/us.png) + 88.2MB/s
+- 104.31.16.158 #United States ![国旗](https://flagcdn.com/w20/us.png) + 88.1MB/s
+- 104.19.237.53 #United States ![国旗](https://flagcdn.com/w20/us.png) + 87.9MB/s
+- 104.16.124.173 #United States ![国旗](https://flagcdn.com/w20/us.png) + 87.8MB/s
+- 104.18.223.253 #Unknown + 87.4MB/s
+- 104.16.147.177 #United States ![国旗](https://flagcdn.com/w20/us.png) + 87.1MB/s
+- 104.19.43.102 #United States ![国旗](https://flagcdn.com/w20/us.png) + 87.0MB/s
+- 104.17.127.233 #United States ![国旗](https://flagcdn.com/w20/us.png) + 86.8MB/s
+- 104.19.189.185 #United States ![国旗](https://flagcdn.com/w20/us.png) + 83.9MB/s
+- 162.159.58.65 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 83.8MB/s
+- 104.26.5.134 #United States ![国旗](https://flagcdn.com/w20/us.png) + 82.4MB/s
+- 104.19.40.71 #United States ![国旗](https://flagcdn.com/w20/us.png) + 81.6MB/s
+- 172.64.91.69 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 81.1MB/s
+- 198.41.208.224 #Unknown + 80.7MB/s
+- 104.19.220.22 #United States ![国旗](https://flagcdn.com/w20/us.png) + 78.8MB/s
+- 104.18.6.198 #United States ![国旗](https://flagcdn.com/w20/us.png) + 78.7MB/s
+- 104.19.36.200 #United States ![国旗](https://flagcdn.com/w20/us.png) + 77.6MB/s
+- 104.16.252.238 #United States ![国旗](https://flagcdn.com/w20/us.png) + 77.2MB/s
+- 104.17.222.254 #United States ![国旗](https://flagcdn.com/w20/us.png) + 77.0MB/s
+- 104.18.239.27 #Unknown + 76.5MB/s
+- 172.64.150.157 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 76.1MB/s
+- 104.16.105.166 #United States ![国旗](https://flagcdn.com/w20/us.png) + 75.7MB/s
+- 104.19.154.200 #United States ![国旗](https://flagcdn.com/w20/us.png) + 75.6MB/s
+- 162.159.137.204 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 75.5MB/s
+- 172.64.229.7 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 75.4MB/s
+- 198.41.194.162 #Unknown + 75.3MB/s
+- 104.19.38.86 #United States ![国旗](https://flagcdn.com/w20/us.png) + 74.6MB/s
+- 104.18.244.45 #Unknown + 74.5MB/s
+- 104.16.95.45 #United States ![国旗](https://flagcdn.com/w20/us.png) + 72.7MB/s
+- 104.19.212.207 #United States ![国旗](https://flagcdn.com/w20/us.png) + 72.4MB/s
+- 104.18.40.163 #United States ![国旗](https://flagcdn.com/w20/us.png) + 71.4MB/s
+- 104.18.142.219 #United States ![国旗](https://flagcdn.com/w20/us.png) + 71.4MB/s
+- 104.19.37.3 #United States ![国旗](https://flagcdn.com/w20/us.png) + 71.0MB/s
+- 104.17.161.114 #United States ![国旗](https://flagcdn.com/w20/us.png) + 70.7MB/s
+- 104.19.148.121 #United States ![国旗](https://flagcdn.com/w20/us.png) + 69.8MB/s
+- 104.27.95.96 #United States ![国旗](https://flagcdn.com/w20/us.png) + 69.5MB/s
+- 104.19.44.251 #United States ![国旗](https://flagcdn.com/w20/us.png) + 69.0MB/s
+- 104.26.3.162 #United States ![国旗](https://flagcdn.com/w20/us.png) + 68.5MB/s
+- 104.18.89.52 #United States ![国旗](https://flagcdn.com/w20/us.png) + 68.2MB/s
+- 104.18.47.34 #United States ![国旗](https://flagcdn.com/w20/us.png) + 68.1MB/s
+- 104.19.157.2 #United States ![国旗](https://flagcdn.com/w20/us.png) + 66.6MB/s
+- 104.19.34.161 #United States ![国旗](https://flagcdn.com/w20/us.png) + 66.4MB/s
+- 104.17.167.134 #United States ![国旗](https://flagcdn.com/w20/us.png) + 66.3MB/s
+- 162.159.128.253 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 66.3MB/s
+- 104.16.230.244 #United States ![国旗](https://flagcdn.com/w20/us.png) + 66.0MB/s
+- 104.26.4.90 #United States ![国旗](https://flagcdn.com/w20/us.png) + 65.5MB/s
+- 104.17.143.187 #United States ![国旗](https://flagcdn.com/w20/us.png) + 65.3MB/s
+- 104.17.181.242 #United States ![国旗](https://flagcdn.com/w20/us.png) + 65.2MB/s
+- 104.17.162.3 #United States ![国旗](https://flagcdn.com/w20/us.png) + 63.9MB/s
+- 104.17.205.93 #United States ![国旗](https://flagcdn.com/w20/us.png) + 63.9MB/s
+- 172.64.82.114 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 63.9MB/s
+- 104.18.44.202 #United States ![国旗](https://flagcdn.com/w20/us.png) + 63.6MB/s
+- 104.18.39.39 #United States ![国旗](https://flagcdn.com/w20/us.png) + 63.1MB/s
+- 104.17.142.212 #United States ![国旗](https://flagcdn.com/w20/us.png) + 63.0MB/s
+- 162.159.134.22 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 62.2MB/s
+- 162.159.140.116 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 59.9MB/s
+- 104.19.37.5 #United States ![国旗](https://flagcdn.com/w20/us.png) + 59.8MB/s
+- 104.17.69.244 #United States ![国旗](https://flagcdn.com/w20/us.png) + 59.6MB/s
+- 173.245.49.194 #Unknown + 59.5MB/s
+- 104.17.94.77 #United States ![国旗](https://flagcdn.com/w20/us.png) + 58.7MB/s
+- 162.159.61.183 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 58.1MB/s
+- 104.17.215.246 #United States ![国旗](https://flagcdn.com/w20/us.png) + 57.8MB/s
+- 104.16.157.83 #United States ![国旗](https://flagcdn.com/w20/us.png) + 57.7MB/s
+- 104.18.189.153 #Unknown + 57.6MB/s
+- 104.17.53.116 #United States ![国旗](https://flagcdn.com/w20/us.png) + 57.3MB/s
+- 8.35.211.45 #United States ![国旗](https://flagcdn.com/w20/us.png) + 57.2MB/s
+- 104.16.245.174 #United States ![国旗](https://flagcdn.com/w20/us.png) + 54.0MB/s
+- 104.17.102.43 #United States ![国旗](https://flagcdn.com/w20/us.png) + 54.0MB/s
+- 104.16.65.1 #United States ![国旗](https://flagcdn.com/w20/us.png) + 53.6MB/s
+- 104.19.38.7 #United States ![国旗](https://flagcdn.com/w20/us.png) + 51.6MB/s
+- 104.18.172.15 #Unknown + 51.0MB/s
+- 104.18.81.19 #United States ![国旗](https://flagcdn.com/w20/us.png) + 49.0MB/s
+- 104.19.62.231 #United States ![国旗](https://flagcdn.com/w20/us.png) + 49.0MB/s
+- 104.19.39.58 #United States ![国旗](https://flagcdn.com/w20/us.png) + 48.9MB/s
+- 172.64.52.127 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 48.7MB/s
+- 104.19.47.43 #United States ![国旗](https://flagcdn.com/w20/us.png) + 48.0MB/s
+- 104.17.253.125 #United States ![国旗](https://flagcdn.com/w20/us.png) + 47.5MB/s
+- 104.17.121.27 #United States ![国旗](https://flagcdn.com/w20/us.png) + 47.0MB/s
+- 104.18.166.129 #United States ![国旗](https://flagcdn.com/w20/us.png) + 45.2MB/s
+- 104.17.173.62 #United States ![国旗](https://flagcdn.com/w20/us.png) + 44.9MB/s
+- 104.17.173.73 #United States ![国旗](https://flagcdn.com/w20/us.png) + 42.9MB/s
+- 104.18.151.172 #United States ![国旗](https://flagcdn.com/w20/us.png) + 42.9MB/s
+- 104.17.139.37 #United States ![国旗](https://flagcdn.com/w20/us.png) + 40.9MB/s
+- 104.18.255.167 #United States ![国旗](https://flagcdn.com/w20/us.png) + 40.6MB/s
+- 104.19.40.128 #United States ![国旗](https://flagcdn.com/w20/us.png) + 39.9MB/s
+- 104.19.54.202 #United States ![国旗](https://flagcdn.com/w20/us.png) + 39.1MB/s
+- 162.159.136.89 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 38.2MB/s
+- 104.19.111.12 #United States ![国旗](https://flagcdn.com/w20/us.png) + 36.8MB/s
+- 198.41.208.15 #Unknown + 35.4MB/s
+- 162.159.24.131 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 33.0MB/s
+- 104.19.41.51 #United States ![国旗](https://flagcdn.com/w20/us.png) + 32.8MB/s
+- 104.17.124.228 #United States ![国旗](https://flagcdn.com/w20/us.png) + 32.5MB/s
+- 104.16.14.100 #United States ![国旗](https://flagcdn.com/w20/us.png) + 31.8MB/s
+- 104.17.46.64 #United States ![国旗](https://flagcdn.com/w20/us.png) + 28.0MB/s
+- 104.17.157.135 #United States ![国旗](https://flagcdn.com/w20/us.png) + 26.7MB/s
+- 172.64.48.226 #Canada ![国旗](https://flagcdn.com/w20/ca.png) + 23.5MB/s
+- 104.17.206.21 #United States ![国旗](https://flagcdn.com/w20/us.png) + 17.3MB/s
