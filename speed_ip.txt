@@ -1,100 +1,104 @@
-# IP 带宽测速结果 (CF 10MB 测试，所有成功 IP)
-# 生成时间: 2025-11-13 14:33:17 UTC
-# 总测试: 96, 成功: 96, 失败: 0
+# IP 带宽测速结果 (动态国旗: IP#国旗+速率，所有成功 IP)
+# 生成时间: 2025-11-13 15:11:42 UTC
+# 总测试: 100, 成功: 100, 失败: 0
 
-104.18.39.39#United States New Jersey Newark+79.3MB/s
-162.159.24.131#Canada Ontario Toronto+77.4MB/s
-104.19.37.5#United States New Jersey Newark+77.2MB/s
-172.64.91.69#Canada Ontario Toronto+76.1MB/s
-104.27.125.248#United States New Jersey Newark+76.0MB/s
-104.18.40.163#United States New Jersey Newark+75.5MB/s
-172.64.48.226#Canada Ontario Toronto+75.1MB/s
-162.159.136.89#Canada Ontario Toronto+75.0MB/s
-104.18.47.34#United States New York New York+74.7MB/s
-104.19.38.7#United States New Jersey Newark+74.7MB/s
-104.24.222.227#United States New Jersey Newark+74.6MB/s
-162.159.135.106#Canada Ontario Toronto+74.2MB/s
-104.19.53.201#United States New York New York+73.5MB/s
-162.159.134.22#Canada Ontario Toronto+72.9MB/s
-104.19.62.231#United States New York New York+72.8MB/s
-104.18.6.198#United States New Jersey Newark+72.6MB/s
-104.20.45.22#United States New Jersey Newark+72.6MB/s
-173.245.49.194#Canada Ontario Toronto+72.6MB/s
-104.19.36.200#United States New Jersey Newark+72.4MB/s
-162.159.137.207#Canada Ontario Toronto+72.4MB/s
-104.26.8.117#United States New Jersey Newark+72.0MB/s
-162.159.133.251#Canada Ontario Toronto+71.7MB/s
-104.19.56.5#United States New Jersey Newark+71.4MB/s
-162.159.128.253#Canada Ontario Toronto+71.4MB/s
-104.19.43.102#United States New Jersey Newark+70.8MB/s
-104.19.40.71#United States New Jersey Newark+70.5MB/s
-172.64.52.127#Canada Ontario Toronto+70.5MB/s
-104.18.44.202#United States New Jersey Newark+69.8MB/s
-162.159.58.65#Canada Ontario Toronto+69.6MB/s
-198.41.194.162#Unknown+69.1MB/s
-104.20.47.5#United States New Jersey Newark+68.8MB/s
-104.31.16.158#United States New Jersey Newark+68.6MB/s
-172.64.82.114#Canada Ontario Toronto+68.0MB/s
-172.64.229.7#Canada Ontario Toronto+67.4MB/s
-104.19.62.235#United States New York New York+66.7MB/s
-104.26.4.90#United States New Jersey Newark+66.6MB/s
-8.35.211.45#United States California San Francisco+66.5MB/s
-104.26.5.134#United States New York New York+66.5MB/s
-162.159.140.85#Canada Ontario Toronto+65.1MB/s
-162.159.153.41#Canada Ontario Toronto+64.1MB/s
-162.159.137.204#Canada Ontario Toronto+60.8MB/s
-162.159.140.116#Canada Ontario Toronto+60.3MB/s
-104.26.3.162#United States New Jersey Newark+52.8MB/s
-162.159.61.183#Canada Ontario Toronto+47.5MB/s
-198.41.208.15#Unknown+45.6MB/s
-104.18.172.15#Unknown+45.1MB/s
-104.16.124.173#United States New Jersey Newark+44.2MB/s
-104.16.65.1#United States New Jersey Newark+43.9MB/s
-104.17.167.134#United States New Jersey Newark+43.5MB/s
-198.41.208.224#Unknown+43.3MB/s
-104.17.102.43#United States New Jersey Newark+43.2MB/s
-104.16.244.161#United States New Jersey Newark+43.0MB/s
-104.16.240.62#United States New Jersey Newark+42.7MB/s
-104.17.53.116#United States New Jersey Newark+42.6MB/s
-104.17.139.37#United States New Jersey Newark+42.5MB/s
-104.17.69.244#United States New Jersey Newark+42.2MB/s
-104.16.147.177#United States New Jersey Newark+42.1MB/s
-104.17.127.233#United States New Jersey Newark+42.0MB/s
-104.17.157.135#United States New Jersey Newark+42.0MB/s
-104.17.173.73#United States New York New York+42.0MB/s
-104.18.255.167#United States New Jersey Newark+42.0MB/s
-104.16.252.50#United States New York New York+41.6MB/s
-104.18.223.253#Unknown+41.3MB/s
-104.19.154.200#United States New Jersey Newark+41.0MB/s
-104.17.142.212#United States New Jersey Newark+40.6MB/s
-104.18.89.52#United States New Jersey Newark+40.3MB/s
-104.19.148.121#United States New York New York+40.3MB/s
-104.16.252.238#United States New York New York+40.0MB/s
-104.18.244.45#United States New Jersey Newark+40.0MB/s
-104.17.121.27#United States New Jersey Newark+39.7MB/s
-104.17.205.93#United States New Jersey Newark+39.6MB/s
-104.16.14.100#United States New Jersey Newark+39.5MB/s
-104.16.105.166#United States New Jersey Newark+39.5MB/s
-104.18.166.129#United States New Jersey Newark+39.3MB/s
-104.17.237.106#United States New Jersey Newark+39.0MB/s
-104.17.162.3#United States New Jersey Newark+38.7MB/s
-104.17.222.59#United States New Jersey Newark+38.6MB/s
-104.16.158.42#United States New Jersey Newark+38.0MB/s
-104.17.238.77#United States New Jersey Newark+37.7MB/s
-104.18.157.76#United States New Jersey Newark+37.4MB/s
-104.18.151.172#United States New Jersey Newark+36.6MB/s
-104.16.79.248#United States New Jersey Newark+36.3MB/s
-104.19.222.74#United States New Jersey Newark+36.3MB/s
-104.17.222.254#United States New Jersey Newark+36.2MB/s
-104.17.210.85#United States New Jersey Newark+36.0MB/s
-104.18.77.160#United States New Jersey Newark+35.9MB/s
-104.18.81.19#United States New Jersey Newark+35.6MB/s
-104.17.181.242#United States New Jersey Newark+33.6MB/s
-104.17.94.77#United States New Jersey Newark+32.9MB/s
-104.19.220.22#United States New York New York+32.7MB/s
-104.18.189.153#Unknown+32.2MB/s
-104.16.245.174#United States New Jersey Newark+29.5MB/s
-104.18.239.27#United States New Jersey Newark+26.2MB/s
-104.17.215.246#United States New Jersey Newark+26.1MB/s
-104.17.124.228#United States New Jersey Newark+23.9MB/s
-104.19.212.207#United States New Jersey Newark+18.3MB/s
+162.159.61.183#🇨🇦+78.2MB/s
+162.159.140.116#🇨🇦+77.6MB/s
+172.64.91.69#❓+77.6MB/s
+104.19.37.3#🇺🇸+75.5MB/s
+104.19.38.86#🇺🇸+75.3MB/s
+104.19.44.251#🇺🇸+75.3MB/s
+104.31.16.158#🇺🇸+75.0MB/s
+104.19.41.51#🇺🇸+74.9MB/s
+8.35.211.45#🇺🇸+74.6MB/s
+162.159.137.204#🇨🇦+74.4MB/s
+104.19.39.58#🇺🇸+72.8MB/s
+104.19.40.128#🇺🇸+72.8MB/s
+172.64.48.226#🇨🇦+70.9MB/s
+162.159.134.22#🇨🇦+70.7MB/s
+104.18.47.34#🇺🇸+70.0MB/s
+173.245.49.194#🇨🇦+70.0MB/s
+172.64.82.114#❓+69.7MB/s
+104.19.37.5#🇺🇸+69.5MB/s
+104.19.40.71#🇺🇸+69.3MB/s
+104.19.47.43#🇺🇸+68.4MB/s
+104.19.54.202#🇺🇸+68.2MB/s
+104.18.40.163#🇺🇸+68.1MB/s
+104.19.62.231#🇺🇸+68.1MB/s
+104.26.5.134#🇺🇸+67.7MB/s
+162.159.58.65#🇨🇦+67.5MB/s
+104.27.95.96#🇺🇸+66.8MB/s
+104.26.4.90#🇺🇸+66.5MB/s
+198.41.194.162#🇨🇦+66.0MB/s
+104.19.111.12#🇺🇸+65.9MB/s
+104.18.44.202#🇺🇸+65.8MB/s
+172.64.229.7#❓+65.7MB/s
+162.159.140.85#🇨🇦+64.9MB/s
+162.159.136.89#🇨🇦+64.6MB/s
+104.18.39.39#🇺🇸+64.3MB/s
+172.66.3.155#❓+63.4MB/s
+162.159.128.253#🇨🇦+62.3MB/s
+104.19.36.200#🇺🇸+61.6MB/s
+162.159.24.131#🇨🇦+61.2MB/s
+172.64.52.127#🇨🇦+60.4MB/s
+104.19.38.7#🇺🇸+59.3MB/s
+172.64.150.157#❓+58.9MB/s
+104.19.34.161#🇺🇸+58.8MB/s
+104.19.43.102#🇺🇸+56.2MB/s
+104.26.3.162#🇺🇸+54.3MB/s
+104.26.8.117#🇺🇸+49.3MB/s
+104.18.244.45#🇺🇸+43.8MB/s
+104.16.147.177#🇺🇸+43.5MB/s
+104.18.151.172#🇺🇸+42.9MB/s
+104.16.95.45#🇺🇸+42.7MB/s
+104.16.157.83#🇺🇸+42.5MB/s
+104.17.215.246#🇺🇸+41.9MB/s
+104.19.189.185#🇺🇸+41.8MB/s
+104.17.53.116#🇺🇸+41.7MB/s
+104.16.14.100#🇺🇸+40.9MB/s
+104.17.102.43#🇺🇸+40.9MB/s
+198.41.208.15#🇨🇦+40.9MB/s
+104.19.237.53#🇺🇸+40.8MB/s
+104.17.222.254#🇺🇸+39.9MB/s
+104.17.46.64#🇺🇸+39.7MB/s
+104.19.148.121#🇺🇸+39.6MB/s
+104.16.252.238#🇺🇸+39.2MB/s
+104.18.89.52#🇺🇸+39.0MB/s
+104.17.173.73#🇺🇸+38.7MB/s
+104.16.245.174#🇺🇸+38.0MB/s
+104.17.69.244#🇺🇸+37.6MB/s
+104.17.94.77#🇺🇸+37.0MB/s
+104.18.239.27#🇺🇸+36.5MB/s
+104.18.6.198#🇺🇸+36.4MB/s
+104.18.172.15#❓+35.6MB/s
+104.17.127.233#🇺🇸+35.5MB/s
+104.18.189.153#🇺🇸+35.3MB/s
+104.17.167.134#🇺🇸+35.1MB/s
+104.18.223.253#🇺🇸+35.1MB/s
+104.17.173.62#🇺🇸+34.4MB/s
+104.16.105.166#🇺🇸+33.9MB/s
+104.17.181.242#🇺🇸+33.8MB/s
+104.17.206.21#🇺🇸+33.6MB/s
+104.18.255.167#🇺🇸+33.6MB/s
+104.16.230.244#🇺🇸+33.4MB/s
+104.17.143.187#🇺🇸+33.4MB/s
+104.17.161.114#🇺🇸+32.8MB/s
+104.19.220.22#🇺🇸+32.7MB/s
+104.17.121.27#🇺🇸+31.5MB/s
+104.17.124.228#🇺🇸+31.5MB/s
+104.19.212.207#🇺🇸+31.3MB/s
+104.16.124.173#🇺🇸+31.2MB/s
+104.18.142.219#🇺🇸+30.4MB/s
+104.16.65.1#🇺🇸+30.0MB/s
+104.19.154.200#🇺🇸+30.0MB/s
+104.17.205.93#🇺🇸+29.9MB/s
+104.17.157.135#🇺🇸+29.5MB/s
+104.19.157.2#🇺🇸+29.1MB/s
+104.17.142.212#🇺🇸+28.6MB/s
+104.17.210.85#🇺🇸+26.6MB/s
+198.41.208.224#🇨🇦+26.4MB/s
+104.17.139.37#🇺🇸+22.6MB/s
+104.18.166.129#🇺🇸+21.9MB/s
+104.17.162.3#🇺🇸+21.1MB/s
+104.18.81.19#🇺🇸+20.8MB/s
+104.17.253.125#🇺🇸+9.9MB/s
