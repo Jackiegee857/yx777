@@ -3,7 +3,6 @@ import time
 import re
 import os
 import subprocess
-import json
 
 # CF 官方带宽测试端点 (10MB 随机数据)
 TEST_URL = 'https://speed.cloudflare.com/__down?bytes=10485760'  # 10MB
@@ -11,20 +10,28 @@ HOST = 'speed.cloudflare.com'
 PORT = 443
 FILE_SIZE = 10485760  # 字节，用于验证
 
-def get_detailed_location(ip):
-    """查询 IP 详细地区"""
+def generate_flag_from_code(code):
+    """根据 ISO alpha-2 代码动态生成国旗 Emoji"""
+    if len(code) != 2 or not code.isalpha():
+        return '❓'
+    # Unicode 公式：A=1F1E6 (Regional Indicator A)
+    flag = ''.join(chr(ord(c.upper()) - ord('A') + 0x1F1E6) for c in code)
+    return flag
+
+def get_country_flag(ip):
+    """查询 IP 国家代码并生成国旗"""
     try:
-        response = requests.get(f'http://ip-api.com/json/{ip}?fields=status,country,regionName,city', timeout=5)
+        response = requests.get(f'http://ip-api.com/json/{ip}?fields=status,countryCode', timeout=5)
         data = response.json()
         if data['status'] == 'success':
-            country = data['country']
-            region = data.get('regionName', '')
-            city = data.get('city', '')
-            return f"{country} {region} {city}".strip()
-        return "Unknown"
+            code = data.get('countryCode', '').strip()
+            flag = generate_flag_from_code(code)
+            country = data.get('country', 'Unknown')  # 备用国家名（可选）
+            return flag, country
+        return '❓', 'Unknown'
     except Exception as e:
-        print(f"地区查询失败 {ip}: {e}")
-        return "Unknown"
+        print(f"国家查询失败 {ip}: {e}")
+        return '❓', 'Unknown'
 
 def test_speed(ip, retries=1):
     """用 curl --resolve 测试 CF 带宽 (MB/s)，重试失败"""
@@ -95,25 +102,25 @@ def main():
             continue
         ip = match.group(1)
 
-        # 查询地区
-        location = get_detailed_location(ip)
-        print(f"\n测试 {ip} - 详细地区: {location}")
+        # 查询国家国旗
+        flag, country = get_country_flag(ip)
+        print(f"\n测试 {ip} - 国家: {country} {flag}")
 
         # 测试带宽
         speed = test_speed(ip)
         time.sleep(1)  # 率限
 
         if speed > 0:
-            result = f"{ip}#{location}+{speed}MB/s"
+            result = f"{ip}#{flag}+{speed}MB/s"
             results.append(result)
             print(f"  -> 成功: {result}")
         else:
             failed_count += 1
             print(f"  -> 失败: 连接不通")
 
-    # 写入 speed_ip.txt (所有成功，按速降序)
+    # 写入 speed_ip.txt (动态国旗版，按速降序)
     with open('speed_ip.txt', 'w', encoding='utf-8') as f:
-        f.write('# IP 带宽测速结果 (CF 10MB 测试，所有成功 IP)\n')
+        f.write('# IP 带宽测速结果 (动态国旗: IP#国旗+速率，所有成功 IP)\n')
         f.write('# 生成时间: ' + time.strftime('%Y-%m-%d %H:%M:%S UTC') + '\n')
         f.write(f'# 总测试: {len(lines)}, 成功: {len(results)}, 失败: {failed_count}\n\n')
         for res in sorted(results, key=lambda x: float(x.split('+')[1].replace('MB/s', '')), reverse=True):
