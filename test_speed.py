@@ -13,9 +13,27 @@ FILE_SIZE = 10485760  # 字节，用于验证
 # 默认端口
 DEFAULT_PORT = 8443
 
-# 英文国家名到中文翻译字典 (扩展更多)
+# 国家映射：支持 code (US) 和 full name (United States)
 EN_TO_CN = {
-    'United States': '美国',  # 精确匹配你的 IP
+    # Codes
+    'US': '美国',
+    'CA': '加拿大',
+    'CN': '中国',
+    'GB': '英国',
+    'DE': '德国',
+    'FR': '法国',
+    'JP': '日本',
+    'AU': '澳大利亚',
+    'IN': '印度',
+    'BR': '巴西',
+    'RU': '俄罗斯',
+    'KR': '韩国',
+    'NL': '荷兰',
+    'SG': '新加坡',
+    'HK': '香港',
+    'TW': '台湾',
+    # Full names (fallback)
+    'United States': '美国',
     'Canada': '加拿大',
     'China': '中国',
     'United Kingdom': '英国',
@@ -36,42 +54,42 @@ EN_TO_CN = {
     'Unknown': '未知'
 }
 
-# 浏览器 UA，绕 403
+# 浏览器 UA，绕检测
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 
 def get_chinese_country(ip, max_retries=1):
-    """查询 IP 国家（优化：UA + 备用 API + 调试，只重试1次）"""
+    """查询 IP 国家（新 API：IPinfo 主 + ipgeolocation 备用，只 1 次）"""
     headers = {'User-Agent': USER_AGENT}
     for attempt in range(max_retries):
         try:
-            # 主 API: ip-api.com
-            url = f'https://ip-api.com/json/{ip}?fields=status,country'
-            print(f"  查询 {ip} (尝试 {attempt+1}, 主 API)...")
+            # 主 API: IPinfo.io (免费 50k/月，高准，无 key)
+            url = f'https://ipinfo.io/{ip}/country'
+            print(f"  查询 {ip} (尝试 {attempt+1}, IPinfo)...")
             response = requests.get(url, headers=headers, timeout=10)
             print(f"  Status: {response.status_code}, Text len: {len(response.text)}")
-            print(f"  响应预览: {response.text[:50]}...")  # 调试：看错误文本
+            print(f"  响应预览: {response.text[:50]}...")  # 调试
             
             if response.status_code == 200:
-                data = response.json()
-                if data['status'] == 'success':
-                    en_country = data.get('country', 'Unknown')
+                en_country = response.text.strip()
+                if en_country:  # 如 "US"
                     cn_country = EN_TO_CN.get(en_country, en_country)
                     print(f"  国家: {en_country} -> {cn_country}")
                     return cn_country
                 else:
-                    print(f"  API fail: {data.get('message', 'Unknown')}")
-            elif response.status_code == 403:
-                print("  403 疑似 bot 检测/限速，尝试备用 API...")
-                # 备用: ipapi.co (免费，限 1000/day，无 UA 严查)
-                backup_url = f'https://ipapi.co/{ip}/country_name/'
+                    print("  IPinfo 空响应")
+            elif response.status_code in [403, 429]:
+                print(f"  {response.status_code} 限速，尝试备用...")
+                # 备用: ipgeolocation.io (免费 30k/月，无 key)
+                backup_url = f'https://api.ipgeolocation.io/ipgeo?apiKey=demo&ip={ip}&fields=country_name'  # demo key 免费
                 backup_resp = requests.get(backup_url, headers=headers, timeout=10)
                 if backup_resp.status_code == 200:
-                    en_country = backup_resp.text.strip()
+                    data = backup_resp.json()
+                    en_country = data.get('country_name', 'Unknown')
                     cn_country = EN_TO_CN.get(en_country, en_country)
                     print(f"  备用成功: {en_country} -> {cn_country}")
                     return cn_country
                 else:
-                    print(f"  备用也失败: {backup_resp.status_code}")
+                    print(f"  备用失败: {backup_resp.status_code}")
             else:
                 raise ValueError(f"HTTP {response.status_code}")
         
@@ -79,10 +97,10 @@ def get_chinese_country(ip, max_retries=1):
             print(f"  异常 (尝试 {attempt+1}): {e}")
         
         if attempt < max_retries - 1:
-            time.sleep(2 ** attempt)  # 指数退避（但 max_retries=1 时无延时）
+            time.sleep(1)  # 短延时
     
-    print(f"  国家查询最终失败 {ip}")
-    return '未知'
+    print(f"  国家查询最终失败 {ip}，默认全球 (CF 常见)")
+    return '全球'  # CF IPs 常 anycast，fallback 全球
 
 def test_speed(ip, retries=1):
     """用 curl --resolve 测试 CF 带宽 (MB/s)，重试失败"""
@@ -156,7 +174,7 @@ def main():
             cn_country = get_chinese_country(ip)
             print(f"\n测试 {ip_port} - {cn_country}")
             speed = test_speed(ip)
-            time.sleep(1)  # 查询+测速延时，防限速
+            time.sleep(1)  # 延时防限速
             if speed > 0:
                 result = f"{ip_port}#{cn_country} {speed}MB/s"
                 results.append(result)
