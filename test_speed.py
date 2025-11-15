@@ -14,48 +14,49 @@ FILE_SIZE = 10485760  # 字节，用于验证
 DEFAULT_PORT = 8443
 
 def get_chinese_city(ip):
-    """查询 IP 城市，并返回城市名（主: ip-api.com；"未知"/失败时备用1: ipinfo.io → 备用2: ipgeolocation.io）"""
-    # 主 API: ip-api.com (HTTP 如前两天)
+    """查询 IP 城市，并返回中文城市名（主: ip-api.com；"未知"/失败时备用1: ipinfo.io → 备用2: ipgeolocation.io）"""
+    # 主 API: ip-api.com (HTTP 如前两天，lang=zh-CN 获取中文)
     try:
-        response = requests.get(f'http://ip-api.com/json/{ip}?fields=status,city', timeout=5)
+        response = requests.get(f'http://ip-api.com/json/{ip}?fields=status,city&lang=zh-CN', timeout=5)
         data = response.json()
         if data['status'] == 'success':
-            en_city = data.get('city', 'Unknown')  # 优先 city
-            if en_city != 'Unknown':
-                print(f" 城市: {en_city}")
-                return en_city
+            cn_city = data.get('city', '未知')
+            if cn_city != '未知':
+                print(f" 城市: {cn_city}")
+                return cn_city
             else:
-                print("  ip-api.com 返回 Unknown，尝试备用1: ipinfo.io...")
+                print("  ip-api.com 返回未知，尝试备用1: ipinfo.io...")
         else:
             print(f"  ip-api.com status fail: {data.get('message', 'Unknown')}，尝试备用1: ipinfo.io...")
     except Exception as e:
         print(f"  ip-api.com 查询失败 {ip}: {e}，尝试备用1: ipinfo.io...")
     
-    # 备用1: ipinfo.io
+    # 备用1: ipinfo.io (lang=zh 获取中文)
     try:
-        backup1_resp = requests.get(f'https://ipinfo.io/{ip}/city', timeout=5)
+        backup1_resp = requests.get(f'https://ipinfo.io/{ip}/json?lang=zh', timeout=5)
         if backup1_resp.status_code == 200:
-            en_city1 = backup1_resp.text.strip()
-            if en_city1 and en_city1 != 'Unknown':
-                print(f"  备用1 成功: {en_city1}")
-                return en_city1
+            backup1_data = backup1_resp.json()
+            cn_city1 = backup1_data.get('city', '未知')
+            if cn_city1 != '未知':
+                print(f"  备用1 成功: {cn_city1}")
+                return cn_city1
             else:
-                print("  ipinfo.io 返回 Unknown，尝试备用2: ipgeolocation.io...")
+                print("  ipinfo.io 返回未知，尝试备用2: ipgeolocation.io...")
         else:
             print(f"  备用1 失败: {backup1_resp.status_code}，尝试备用2...")
     except Exception as e:
         print(f"  备用1 异常: {e}，尝试备用2...")
     
-    # 备用2: ipgeolocation.io (demo key)
+    # 备用2: ipgeolocation.io (demo key, lang=zh 获取中文)
     try:
-        backup2_resp = requests.get(f'https://api.ipgeolocation.io/ipgeo?apiKey=demo&ip={ip}&fields=city', timeout=5)
+        backup2_resp = requests.get(f'https://api.ipgeolocation.io/ipgeo?apiKey=demo&ip={ip}&fields=city&lang=zh', timeout=5)
         if backup2_resp.status_code == 200:
             backup2_data = backup2_resp.json()
-            en_city2 = backup2_data.get('city', 'Unknown')
-            if en_city2 != 'Unknown':
-                print(f"  备用2 成功: {en_city2}")
-                return en_city2
-            print("  备用2 返回 Unknown")
+            cn_city2 = backup2_data.get('city', '未知')
+            if cn_city2 != '未知':
+                print(f"  备用2 成功: {cn_city2}")
+                return cn_city2
+            print("  备用2 返回未知")
         else:
             print(f"  备用2 失败: {backup2_resp.status_code}")
         return '未知'
