@@ -64,32 +64,27 @@ def translate_city(en_city):
     """英文城市转中文"""
     return EN_CITY_TO_CN.get(en_city, en_city)  # 未匹配返回原英文
 
-def get_chinese_city(ip, max_retries=2):
-    """查询 IP 城市，并返回中文城市名（主: ip-api.com 重试；如果返回'San Francisco'则fallback；备用翻译英文）"""
-    for retry in range(max_retries):
-        # 主 API: ip-api.com (HTTPS, lang=zh-CN 获取中文)
-        try:
-            time.sleep(1)  # 防限速
-            response = requests.get(f'https://ip-api.com/json/{ip}?fields=status,city&lang=zh-CN', timeout=10)
-            data = response.json()
-            if data['status'] == 'success':
-                cn_city = data.get('city', '未知')
-                if cn_city != '未知' and cn_city != 'San Francisco':  # 新规则：如果主API返回'San Francisco'，视为无效，fallback
-                    print(f" 城市: {cn_city} (主 API, 尝试 {retry+1})")
-                    return cn_city
-                else:
-                    print(f"  ip-api.com 返回 {cn_city} (尝试 {retry+1})，按规则 fallback...")
-            else:
-                print(f"  ip-api.com status fail (尝试 {retry+1}): {data.get('message', 'Unknown')}")
-        except Exception as e:
-            print(f"  ip-api.com 查询失败 {ip} (尝试 {retry+1}): {e}")
-        
-        if retry < max_retries - 1:
-            time.sleep(2)  # 重试延时
-    
-    # 如果主 API 全失败或返回'San Francisco'，备用1: ipinfo.io (英文后翻译)
+def get_chinese_city(ip):
+    """查询 IP 城市，并返回中文城市名（主: ip-api.com 单次；失败 fallback 备用1 → 备用2 并翻译）"""
+    # 主 API: ip-api.com (HTTP, lang=zh-CN 获取中文，单次查询)
     try:
-        backup1_resp = requests.get(f'https://ipinfo.io/{ip}/json?lang=zh', timeout=10)
+        response = requests.get(f'http://ip-api.com/json/{ip}?fields=status,city&lang=zh-CN', timeout=5)
+        data = response.json()
+        if data['status'] == 'success':
+            cn_city = data.get('city', '未知')
+            if cn_city != '未知':
+                print(f" 城市: {cn_city} (主 API)")
+                return cn_city
+            else:
+                print("  ip-api.com 返回未知，尝试备用1...")
+        else:
+            print(f"  ip-api.com status fail: {data.get('message', 'Unknown')}，尝试备用1...")
+    except Exception as e:
+        print(f"  ip-api.com 查询失败 {ip}: {e}，尝试备用1...")
+    
+    # 备用1: ipinfo.io (单次，英文后翻译)
+    try:
+        backup1_resp = requests.get(f'https://ipinfo.io/{ip}/json?lang=zh', timeout=5)
         if backup1_resp.status_code == 200:
             backup1_data = backup1_resp.json()
             en_city1 = backup1_data.get('city', '未知')
@@ -97,13 +92,13 @@ def get_chinese_city(ip, max_retries=2):
             print(f"  备用1 成功: {en_city1} -> {cn_city1}")
             return cn_city1
         else:
-            print(f"  备用1 失败: {backup1_resp.status_code}")
+            print(f"  备用1 失败: {backup1_resp.status_code}，尝试备用2...")
     except Exception as e:
-        print(f"  备用1 异常: {e}")
+        print(f"  备用1 异常: {e}，尝试备用2...")
     
-    # 备用2: ipgeolocation.io (英文后翻译)
+    # 备用2: ipgeolocation.io (demo key, 英文后翻译)
     try:
-        backup2_resp = requests.get(f'https://api.ipgeolocation.io/ipgeo?apiKey=demo&ip={ip}&fields=city', timeout=10)
+        backup2_resp = requests.get(f'https://api.ipgeolocation.io/ipgeo?apiKey=demo&ip={ip}&fields=city', timeout=5)
         if backup2_resp.status_code == 200:
             backup2_data = backup2_resp.json()
             en_city2 = backup2_data.get('city', '未知')
@@ -148,7 +143,7 @@ def test_speed(ip, retries=1):
                 if downloaded >= FILE_SIZE * 0.9:
                     speed_mbps = speed_bps / 1048576
                     if speed_mbps > 0:
-                        print(f" 成功！下载 {downloaded/1048576:.1f}MB, 速度: {round(speed_mbps, 1)}MB/s")
+                        print(f" 成功！下载 {downloaded/10485760:.1f}MB, 速度: {round(speed_mbps, 1)}MB/s")
                         return round(speed_mbps, 1)
                 print(f" 下载不完整 (code {result.returncode}): {output}")
                 return 0.0
