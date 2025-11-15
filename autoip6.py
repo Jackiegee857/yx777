@@ -14,7 +14,7 @@ from selenium.webdriver.chrome.options import Options
 # 目标URL列表
 urls = [
     'https://raw.githubusercontent.com/ymyuuu/IPDB/main/BestCF/bestcfv4.txt',
-    'https://raw.githubusercontent.com/rong2er/Senflare-IP666/refs/heads/main/Ranking.txt',
+    'https://raw.githubusercontent.com/rong2er/IP666/refs/heads/main/Ranking.txt',
     'https://raw.githubusercontent.com/gslege/CloudflareIP/refs/heads/main/SG.txt',
     'https://raw.githubusercontent.com/gslege/CloudflareIP/refs/heads/main/JP.txt',
     'https://raw.githubusercontent.com/gslege/CloudflareIP/refs/heads/main/DE.txt',
